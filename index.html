@@ -52,19 +52,19 @@
             </div>
             <div class="input-group f-class">
                 <div>
-                    <label for="">First Class ($150)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <label for="">First Class ($ <span id="firstClassCount">150</span>)</label>
+                    <input id="firstClassInput" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <button id="" class="quantity-btn"><i class="fas fa-plus"></i></button>
-                    <button id="" class="quantity-btn"><i class="fas fa-minus"></i></button>
+                    <button id="firstClassIncreaser" class="quantity-btn"><i class="fas fa-plus"></i></button>
+                    <button id="firstClassDecreaser" class="quantity-btn"><i class="fas fa-minus"></i></button>
                 </div>
             </div>
             
             <div class="input-group f-class">
                 <div>
-                    <label for="">Economy ($ <span id="priceCount">100</span>)</label>
-                    <input id="productInput" class="inp-style inp-width" type="number" name="" value="0">
+                    <label for="">Economy ($ <span id="economyCount">100</span>)</label>
+                    <input id="economyInput" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
                     <button id="quantityIncreaser" class="quantity-btn"><i class="fas fa-plus"></i></button>
@@ -108,9 +108,9 @@
         </div>
     </section>
     <script>
-        function priceAndQuantity(isIncrease) {
+        function priceAndQuantity(ticketClass, isIncrease) {
             //total product counter
-            const ticketQuantity = document.getElementById('productInput');
+            const ticketQuantity = document.getElementById(ticketClass+'Input');
             const ticketCount = parseInt(ticketQuantity.value);
             // const ticketCountOutput = ticketCount - 1;
             let ticketCountOutput = ticketCount;
@@ -122,12 +122,30 @@
             }
             ticketQuantity.value = ticketCountOutput;
             //total ticket price counter
-            const ticketPrice = document.getElementById('priceCount');
+            const ticketPrice = document.getElementById(ticketClass+'Count');
             const ticketPriceTotal = ticketCountOutput * 100;
-            document.getElementById('priceCount').innerHTML =  ticketPriceTotal;
+            document.getElementById(ticketClass+'Count').innerHTML =  ticketPriceTotal;
         }
+        // function priceAndQuantity(isIncrease) {
+        //     //total product counter
+        //     const ticketQuantity = document.getElementById('economyInput');
+        //     const ticketCount = parseInt(ticketQuantity.value);
+        //     // const ticketCountOutput = ticketCount - 1;
+        //     let ticketCountOutput = ticketCount;
+        //     if (isIncrease == true) {
+        //         ticketCountOutput = ticketCount + 1;
+        //     }
+        //     if (isIncrease == false && ticketCount>0) {
+        //         ticketCountOutput = ticketCount - 1;
+        //     }
+        //     ticketQuantity.value = ticketCountOutput;
+        //     //total ticket price counter
+        //     const ticketPrice = document.getElementById('economyCount');
+        //     const ticketPriceTotal = ticketCountOutput * 100;
+        //     document.getElementById('economyCount').innerHTML =  ticketPriceTotal;
+        // }
         document.getElementById('quantityIncreaser').addEventListener('click', function(){
-            priceAndQuantity(true);
+            priceAndQuantity('economy', true);
             // //total product counter
             // const ticketQuantity = document.getElementById('productInput');
             // const ticketCount = parseInt(ticketQuantity.value);
@@ -139,7 +157,7 @@
             // document.getElementById('priceCount').innerHTML =  ticketPriceTotal;
         })
         document.getElementById('quantityDecreaser').addEventListener('click', function(){
-            priceAndQuantity(false);
+            priceAndQuantity('economy', false);
             // //total product counter
             // const ticketQuantity = document.getElementById('productInput');
             // const ticketCount = parseInt(ticketQuantity.value);
@@ -149,6 +167,12 @@
             // const ticketPrice = document.getElementById('priceCount');
             // const ticketPriceTotal = ticketCountOutput * 100;
             // document.getElementById('priceCount').innerHTML =  ticketPriceTotal;
+        })
+        document.getElementById('firstClassIncreaser').addEventListener('click', function(){
+            priceAndQuantity('firstClass', true);
+        })
+        document.getElementById('firstClassDecreaser').addEventListener('click', function(){
+            priceAndQuantity('firstClass', false);
         })
     </script>
 
