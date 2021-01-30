@@ -112,7 +112,6 @@
             //total product counter
             const ticketQuantity = document.getElementById(ticketClass+'Input');
             const ticketCount = parseInt(ticketQuantity.value);
-            // const ticketCountOutput = ticketCount - 1;
             let ticketCountOutput = ticketCount;
             if (isIncrease == true) {
                 ticketCountOutput = ticketCount + 1;
@@ -136,11 +135,7 @@
         }
 
         function calculateTotal() {
-            // const firstClassInput = document.getElementById('firstClassInput');
-            // const firstClassPrice = parseInt(firstClassInput.value);
             const firstClassPrice = classVariantPrice('firstClass');
-            // const economyInput = document.getElementById('economyInput');
-            // const economyPrice = parseInt(economyInput.value);
             const economyPrice = classVariantPrice('economy');
             const subTotalPrice = firstClassPrice * 150 + economyPrice * 100;
             document.getElementById('subTotal').innerText = subTotalPrice;
@@ -155,47 +150,12 @@
             const ticketCount = parseInt(ticketInput.value);
             return ticketCount;
         }
-        // function priceAndQuantity(isIncrease) {
-        //     //total product counter
-        //     const ticketQuantity = document.getElementById('economyInput');
-        //     const ticketCount = parseInt(ticketQuantity.value);
-        //     // const ticketCountOutput = ticketCount - 1;
-        //     let ticketCountOutput = ticketCount;
-        //     if (isIncrease == true) {
-        //         ticketCountOutput = ticketCount + 1;
-        //     }
-        //     if (isIncrease == false && ticketCount>0) {
-        //         ticketCountOutput = ticketCount - 1;
-        //     }
-        //     ticketQuantity.value = ticketCountOutput;
-        //     //total ticket price counter
-        //     const ticketPrice = document.getElementById('economyCount');
-        //     const ticketPriceTotal = ticketCountOutput * 100;
-        //     document.getElementById('economyCount').innerHTML =  ticketPriceTotal;
-        // }
+        
         document.getElementById('quantityIncreaser').addEventListener('click', function(){
             priceAndQuantity('economy', true);
-            // //total product counter
-            // const ticketQuantity = document.getElementById('productInput');
-            // const ticketCount = parseInt(ticketQuantity.value);
-            // const ticketCountOutput = ticketCount + 1;
-            // ticketQuantity.value = ticketCountOutput;
-            // //total ticket price counter
-            // const ticketPrice = document.getElementById('priceCount');
-            // const ticketPriceTotal = ticketCountOutput * 100;
-            // document.getElementById('priceCount').innerHTML =  ticketPriceTotal;
         })
         document.getElementById('quantityDecreaser').addEventListener('click', function(){
             priceAndQuantity('economy', false);
-            // //total product counter
-            // const ticketQuantity = document.getElementById('productInput');
-            // const ticketCount = parseInt(ticketQuantity.value);
-            // const ticketCountOutput = ticketCount - 1;
-            // ticketQuantity.value = ticketCountOutput;
-            // //total ticket price counter
-            // const ticketPrice = document.getElementById('priceCount');
-            // const ticketPriceTotal = ticketCountOutput * 100;
-            // document.getElementById('priceCount').innerHTML =  ticketPriceTotal;
         })
         document.getElementById('firstClassIncreaser').addEventListener('click', function(){
             priceAndQuantity('firstClass', true);
