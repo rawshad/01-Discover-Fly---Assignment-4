@@ -77,7 +77,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$500</p>
+                        <p>$ <span id="subTotal">500</span></p>
                     </div>
                 </div>
 
@@ -95,7 +95,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$550</p>
+                        <p>$ <span>550</span></p>
                     </div>
                 </div>
             </div>
@@ -132,6 +132,24 @@
                 ticketPriceTotal = ticketCountOutput * 100;
             }
             document.getElementById(ticketClass+'Count').innerHTML =  ticketPriceTotal;
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            // const firstClassInput = document.getElementById('firstClassInput');
+            // const firstClassPrice = parseInt(firstClassInput.value);
+            const firstClassPrice = classVariantPrice('firstClass');
+            // const economyInput = document.getElementById('economyInput');
+            // const economyPrice = parseInt(economyInput.value);
+            const economyPrice = classVariantPrice('economy');
+            const subTotalPrice = firstClassPrice * 150 + economyPrice * 100;
+            document.getElementById('subTotal').innerText = subTotalPrice;
+        }
+
+        function classVariantPrice(inputClass) {
+            const ticketInput = document.getElementById(inputClass + 'Input');
+            const ticketPrice = parseInt(ticketInput.value);
+            return ticketPrice;
         }
         // function priceAndQuantity(isIncrease) {
         //     //total product counter
